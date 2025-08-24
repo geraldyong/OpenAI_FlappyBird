@@ -1,0 +1,5 @@
+.DS_Store
+k8s/.DS_Store
+frontend/.DS_Store
+backend/.DS_Store
+backend/data/leaderboard.db

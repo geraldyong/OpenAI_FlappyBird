@@ -1,0 +1,22 @@
+services:
+  backend:
+    build: ./backend
+    container_name: flappy-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/data:/app/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/healthz"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  frontend:
+    build: ./frontend
+    container_name: flappy-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      backend:
+        condition: service_started
